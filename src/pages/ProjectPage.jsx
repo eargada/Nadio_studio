@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "../components/Header";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const TitleText = styled.span`
   color: #000000;
@@ -11,6 +12,16 @@ const TitleText = styled.span`
   margin-top: 110px;
 `;
 
+const ProjectsList = styled.ul``;
+
+const Project = styled.li`
+  background-color: white;
+  color: black;
+  padding: 20px;
+  border-radius: 15px;
+  margin-bottom: 10px;
+`;
+
 const ProjectPage = () => {
   return (
     <Wrapper>
@@ -18,6 +29,16 @@ const ProjectPage = () => {
       <div className="body">
         <TitleText className="title">나의 프로젝트</TitleText>
       </div>
+      <ProjectsList>
+        <Project key={Project.id}>
+          <Link
+            to={{
+              pathname: `/${Project.id}`,
+              state: { name: Project.name },
+            }}
+          ></Link>
+        </Project>
+      </ProjectsList>
     </Wrapper>
   );
 };
